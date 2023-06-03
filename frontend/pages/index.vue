@@ -16,7 +16,12 @@
             <v-icon icon="mdi-robot" />
           </div>
           <div class="text ml-4 d-flex align-center text-justify">
-            {{ response.response }}
+            <v-progress-circular
+              v-if="response.loading"
+              indeterminate
+              :size="20"
+            />
+            <span v-else>{{ response.response }}</span>
           </div>
         </div>
       </div>

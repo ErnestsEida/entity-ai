@@ -2,7 +2,7 @@
   <v-app-bar :elevation="1" class="global-header d-flex align-center">
     <div class="global-header-title w-100 d-flex align-center ml-4">
       <v-icon icon="mdi-progress-wrench" />
-      <div class="text-subtitle ml-2">ASSIST AI</div>
+      <div class="text-subtitle ml-2">ENTITY AI</div>
     </div>
   </v-app-bar>
 </template>

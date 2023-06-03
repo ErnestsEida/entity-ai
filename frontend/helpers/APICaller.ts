@@ -25,7 +25,7 @@ function FETCH({
       params,
     })
     .then((response) => {
-      successCallback && successCallback(response)
+      successCallback && successCallback(response.data)
     })
     .catch((response) => {
       errorCallback && errorCallback(response)
