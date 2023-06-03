@@ -6,13 +6,18 @@
     >
       <div
         v-for="response in responseStore.responses"
-        class="response-block d-flex mt-8"
+        class="response-block mt-8"
       >
-        <div class="icon d-flex justify-center align-center">
-          <v-icon icon="mdi-robot" />
+        <div class="question-block text-center my-8 mx-16">
+          {{ response.question }}
         </div>
-        <div class="text ml-4 d-flex align-center text-justify">
-          {{ response }}
+        <div class="d-flex">
+          <div class="icon d-flex justify-center align-center">
+            <v-icon icon="mdi-robot" />
+          </div>
+          <div class="text ml-4 d-flex align-center text-justify">
+            {{ response.response }}
+          </div>
         </div>
       </div>
     </div>
@@ -63,7 +68,7 @@ export default {
 </script>
 
 <style lang="sass">
-.no-responses-block
+.no-responses-block, .question-block
   color: gray
 .question-input-field
   i
