@@ -42,6 +42,7 @@
         @keyup.enter="submitResponse()"
       />
       <v-icon icon="mdi-send" class="ml-2" @click="submitResponse()" />
+      <ManagersAudio />
     </div>
   </div>
 </template>
