@@ -1,23 +1,19 @@
 import os
-import sys
-import openai
-import torch
 import json
 import requests
 from dotenv import load_dotenv
-from transformers import GPT2LMHeadModel, GPT2Tokenizer
 
 # import
 load_dotenv()
 API_KEY = os.getenv('API_KEY')
 
-openai.api_key = API_KEY
 f = open("temp/input.txt", "r")
 data = f.read()
 
 # ChatGPT convert
 API_URL = 'https://api-inference.huggingface.co/models/facebook/blenderbot-3B'
 headers = {"Authorization": f"Bearer {API_KEY}"}
+
 def query(payload):
     data = json.dumps(payload)
     response = requests.request("POST", API_URL, headers=headers, data=data)
