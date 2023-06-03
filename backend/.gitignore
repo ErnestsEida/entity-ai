@@ -13,7 +13,6 @@
 !/log/.keep
 !/tmp/.keep
 /app/scripts/.env
-/app/scripts/temp/
 
 # Ignore pidfiles, but keep the directory.
 /tmp/pids/*

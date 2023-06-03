@@ -12,7 +12,7 @@ load_dotenv()
 API_KEY = os.getenv('API_KEY')
 
 openai.api_key = API_KEY
-f = open("temp/inputTextToText.txt", "r")
+f = open("temp/input.txt", "r")
 data = f.read()
 
 # ChatGPT convert
@@ -31,6 +31,6 @@ l.close()
 
 # delete input file
 f.close()
-os.remove("temp/inputTextToText.txt")
+os.remove("temp/input.txt")
 
 
