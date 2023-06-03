@@ -5,5 +5,7 @@
 </template>
 
 <script>
-export default {}
+export default {
+  // Add returned .mp3 file string to and <audio> tags src attribute, then play it.
+}
 </script>
