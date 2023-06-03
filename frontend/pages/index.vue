@@ -67,11 +67,17 @@ export default {
     submitResponse() {
       this.responseStore.addResponse(this.questionValue)
       this.questionValue = ''
+      this.updateScrollView()
+    },
+
+    updateScrollView() {
       const element = document.getElementsByClassName('response-container')[0]
-      element.scrollTo({
-        top: element.scrollHeight,
-        behavior: 'smooth',
-      })
+      if (element !== undefined) {
+        element.scrollTo({
+          top: element.scrollHeight,
+          behavior: 'smooth',
+        })
+      }
     },
   },
 }

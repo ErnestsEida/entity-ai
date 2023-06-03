@@ -17,7 +17,7 @@ export const useResponseStore = defineStore('responseStore', {
       this.responses.push({ loading: true, question: question, response: '' })
       const newResponse = this.responses[this.responses.length - 1]
       POST({
-        url: 'http://localhost:3001/response',
+        url: 'http://localhost:3001/response/text',
         params: {
           question,
         },

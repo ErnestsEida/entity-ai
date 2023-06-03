@@ -3,9 +3,10 @@ class ResponseController < ApplicationController
     questionText = params[:question]
     path = "#{Rails.root}/app/scripts/temp/input.txt"
     
-    File.open(path, "w") do |f|
-      f.write(questionText)
-    end
+    # Uncomment when python script is ready
+    # File.open(path, "w") do |f|
+    #   f.write(questionText)
+    # end
 
     render json: { answer: "In development...", question: questionText }
   end
