@@ -1,0 +1,4 @@
+python-dotenv
+openai
+git+https://github.com/mmabrouk/chatgpt-wrapper
+
