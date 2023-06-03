@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { GET } from '~/helpers/APICaller'
+import { POST } from '~/helpers/APICaller'
 
 interface IQuestionResponse {
   question: string
@@ -16,15 +16,14 @@ export const useResponseStore = defineStore('responseStore', {
     addResponse(question: string) {
       this.responses.push({ loading: true, question: question, response: '' })
       const newResponse = this.responses[this.responses.length - 1]
-      GET({
-        url: 'http://localhost:3001/',
+      POST({
+        url: 'http://localhost:3001/response',
         params: {
           question,
         },
         successCallback: (response: any) => {
-          console.log(response)
           newResponse.loading = false
-          newResponse.response = 'Nice, it worked!'
+          newResponse.response = response.answer
         },
         errorCallback: (response: any) => {
           newResponse.loading = false
