@@ -12,19 +12,19 @@ f = open("temp/input.txt", "r")
 data = f.read()
 
 # ChatGPT convert
-language = 'en'
-
+LANGUAGE = 'en'
 API_URL = 'https://api-inference.huggingface.co/models/facebook/blenderbot-3B'
-headers = {"Authorization": f"Bearer {API_KEY}"}
+HEADERS = {"Authorization": f"Bearer {API_KEY}"}
 
 def query(payload):
     data = json.dumps(payload)
-    response = requests.request("POST", API_URL, headers=headers, data=data)
+    response = requests.request("POST", API_URL, headers=HEADERS, data=data)
     return json.loads(response.content.decode("utf-8"))
+
 response = query(data)
 
 # output
-myAudio = gTTS(text = response['generated_text'], lang = language, slow = False)
+myAudio = gTTS(text = response['generated_text'], lang = LANGUAGE, slow = False)
 myAudio.save("temp/output.mp3")
 
 # delete input file

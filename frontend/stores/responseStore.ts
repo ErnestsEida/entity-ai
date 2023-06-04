@@ -12,6 +12,7 @@ export const useResponseStore = defineStore('responseStore', {
   state: () => ({
     responses: [] as IQuestionResponse[],
     speaker: true as boolean,
+    audioQueue: [] as string[],
   }),
 
   actions: {
@@ -34,20 +35,30 @@ export const useResponseStore = defineStore('responseStore', {
           },
         })
       } else {
-        POST({
-          url: 'http://localhost:3001/response/text',
-          params: {
-            question,
-            speech: this.speaker,
-          },
-          successCallback: (response: any) => {
+        axios
+          .request({
+            method: 'post',
+            responseType: 'text',
+            url: 'http://localhost:3001/response/text',
+            params: {
+              question,
+              speech: this.speaker,
+            },
+          })
+          .then((response: any) => {
+            const responseData: string = response.data
+            const parts = responseData.split('\r\n\r\n')
+            const mp3Data = parts[1]
+            const answer = parts[3]
+
+            this.audioQueue.push(mp3Data)
             newResponse.loading = false
-            newResponse.response = response
-          },
-          errorCallback: (response: any) => {
+            newResponse.response = answer
+          })
+          .catch((response: any) => {
+            newResponse.loading = false
             console.error(response)
-          },
-        })
+          })
       }
     },
   },
